@@ -1,0 +1,9 @@
+@font-face{
+    font-family: 'cute';
+    font-display: swap;
+    src: url('../font/cute.ttf') format("truetype");
+}
+
+body {
+    font-family: 'cute';
+}
