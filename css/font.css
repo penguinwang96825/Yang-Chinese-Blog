@@ -1,9 +1,9 @@
 @font-face{
-    font-family: 'cute';
+    font-family: 'JasonHandwriting6p';
     font-display: swap;
-    src: url('../font/cute.ttf') format("truetype");
+    src: url('../font/JasonHandwriting6p.ttf') format("truetype");
 }
 
 body {
-    font-family: 'cute';
+    font-family: 'JasonHandwriting6p', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "STZhongsong", "Lantinghei SC", sans-serif;
 }
