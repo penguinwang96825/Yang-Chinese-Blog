@@ -15,6 +15,12 @@
           
           <category> 生活 </category>
           
+          <category> 留學 </category>
+          
+          <category> 工作 </category>
+          
+          <category> 實習 </category>
+          
       </categories>
       
       
@@ -42,6 +48,12 @@
           
           <category> 生活 </category>
           
+          <category> 工作 </category>
+          
+          <category> 求學 </category>
+          
+          <category> KKBOX </category>
+          
       </categories>
       
       
@@ -50,6 +62,14 @@
             <tag> 英國 </tag>
             
             <tag> 日本 </tag>
+            
+            <tag> KKBOX </tag>
+            
+            <tag> 數學系 </tag>
+            
+            <tag> NAIST </tag>
+            
+            <tag> 碩士 </tag>
             
         </tags>
       
