@@ -15,10 +15,6 @@
           
           <category> 科研 </category>
           
-          <category> 線性代數 </category>
-          
-          <category> 微積分 </category>
-          
       </categories>
       
       
@@ -81,18 +77,14 @@
           
           <category> 求學 </category>
           
-          <category> 工作 </category>
-          
-          <category> KKBOX </category>
-          
       </categories>
       
       
         <tags>
             
-            <tag> 日本 </tag>
-            
             <tag> 英國 </tag>
+            
+            <tag> 日本 </tag>
             
             <tag> KKBOX </tag>
             
