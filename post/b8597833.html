@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://yangwangblog.ml/cover/wallhaven-4gmgkd.jpg">
 <meta property="article:published_time" content="2023-02-20T09:41:21.000Z">
-<meta property="article:modified_time" content="2023-02-20T16:11:52.028Z">
+<meta property="article:modified_time" content="2023-02-21T03:57:31.779Z">
 <meta property="article:author" content="汪揚">
 <meta property="article:tag" content="SVD">
 <meta property="article:tag" content="矩陣分解">
@@ -58,7 +58,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-02-21 00:11:52'
+  postUpdate: '2023-02-21 11:57:31'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -190,12 +190,12 @@
 <p>\begin{equation}<br>    (U_{\bot} U_{\bot}^{T})^T &#x3D; (U_{\bot}^{T})^T (U_{\bot})^T &#x3D; U_{\bot} U_{\bot}^{T}<br>\end{equation}</p>
 <p>\begin{equation}<br>    (I - U U^{T})^2 &#x3D; I - 2 U U^{T} + U U^{T} U U^{T} &#x3D; I - U U^{T}<br>\end{equation}</p>
 <p>\begin{equation}<br>    (I - U U^{T})^T &#x3D; (I - U U^{T})<br>\end{equation}</p>
-<p>除此之外，我們還必須了解$U$和$U_{\bot}$是否可以組成整個生成空間。我們先假設這句話為真，那麼對於任何一個向量都必須是$U$和$U_{\bot}$的線性組合，也就是$x &#x3D; aU + bU_{\bot}$，其中$a$和$b$為純量、$x$為一向量。我們先將向量$x$透過投影向量$U U^T$映射到$U$的行空間：</p>
-<p>\begin{equation}<br>    U U^T x &#x3D; U U^T (aU + bU_{\bot}) &#x3D; a U (U^T U)  + b U_{\bot} (U^T U_{\bot}) &#x3D; a U<br>\end{equation}</p>
-<p>其中$U^T U &#x3D; I$($U$為正交矩陣)，還有$U^T U_{\bot} &#x3D; 0$(因為$U$和$U_{\bot}$正交)。類似地，我們也可以將向量$x$透過投影向量$U_{\bot} U_{\bot}^T$映射到$U_{\bot}$的行空間：</p>
-<p>\begin{equation}<br>    U_{\bot} U_{\bot}^T x &#x3D; U_{\bot} U_{\bot}^T (a U + b U_{\bot}) &#x3D; a U_{\bot} (U_{\bot}^T U) + b U_{\bot} (U_{\bot}^T U_{\bot}) &#x3D; b U_{\bot}<br>\end{equation}</p>
+<p>除此之外，我們還必須了解$U$和$U_{\bot}$是否可以組成整個生成空間。我們先假設這句話為真，那麼對於任何一個向量空間都必須是$U$和$U_{\bot}$的線性組合，也就是$S &#x3D; aU + bU_{\bot}$，其中$a$和$b$為純量、$S$為一矩陣。我們先將$S$透過投影向量$U U^T$映射到$U$的行空間：</p>
+<p>\begin{equation}<br>    U U^T S &#x3D; U U^T (aU + bU_{\bot}) &#x3D; a U (U^T U)  + b U_{\bot} (U^T U_{\bot}) &#x3D; a U<br>\end{equation}</p>
+<p>其中$U^T U &#x3D; I$($U$為正交矩陣)，還有$U^T U_{\bot} &#x3D; 0$(因為$U$和$U_{\bot}$正交)。類似地，我們也可以將$S$透過投影向量$U_{\bot} U_{\bot}^T$映射到$U_{\bot}$的行空間：</p>
+<p>\begin{equation}<br>    U_{\bot} U_{\bot}^T S &#x3D; U_{\bot} U_{\bot}^T (a U + b U_{\bot}) &#x3D; a U_{\bot} (U_{\bot}^T U) + b U_{\bot} (U_{\bot}^T U_{\bot}) &#x3D; b U_{\bot}<br>\end{equation}</p>
 <p>合在一起看的話就是：</p>
-<p>\begin{equation}<br>\begin{aligned}<br>    (U U^T + U_{\bot} U_{\bot}^T) x &amp;&#x3D; U U^T x + U_{\bot} U_{\bot}^T x \\<br>                                    &amp;&#x3D; a U + b U_{\bot} \\<br>                                    &amp;&#x3D; x<br>\end{aligned}<br>\end{equation}</p>
+<p>\begin{equation}<br>\begin{aligned}<br>    (U U^T + U_{\bot} U_{\bot}^T) S &amp;&#x3D; U U^T S + U_{\bot} U_{\bot}^T S \\<br>                                    &amp;&#x3D; a U + b U_{\bot} \\<br>                                    &amp;&#x3D; I S<br>\end{aligned}<br>\end{equation}</p>
 <p>所以，我們可以得到$U U^T + U_{\bot} U_{\bot}^T$就是一個identity matrix。我們可以寫成以下恆等式：</p>
 <p>\begin{equation}<br>    U_{\bot} U_{\bot}^T &#x3D; I - U U^T<br>\end{equation}</p>
 <p>回歸到SVD的求導。為了求$dA$(式子\ref{eq:diff-svd})，我們需要算出$dU$、$d\Sigma$、$dV^T$。可以想像把SVD視為一種函示映射$f$，然後對輸入矩陣$A$增加擾動$dA$。那也就相當於對生成$A$的行空間的$U$進行擾動$dU$、對生成$A$的列空間的$V$進行擾動$dV$。不失一般性的，我們先看$dU$。假設$dU$在$U$的整個行空間($m \times m$)進行擾動，其中還可以分解為在$m \times r$和$m \times (m-r)$的部分進行擾動。所以我們可以寫成以下式子：</p>
