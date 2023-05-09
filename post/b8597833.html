@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://yangwangblog.ml/cover/wallhaven-4gmgkd.jpg">
 <meta property="article:published_time" content="2023-02-20T09:41:21.000Z">
-<meta property="article:modified_time" content="2023-03-10T08:51:53.638Z">
+<meta property="article:modified_time" content="2023-05-09T10:15:52.644Z">
 <meta property="article:author" content="汪揚">
 <meta property="article:tag" content="SVD">
 <meta property="article:tag" content="矩陣分解">
@@ -58,7 +58,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-03-10 16:51:53'
+  postUpdate: '2023-05-09 18:15:52'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -218,7 +218,8 @@
 <p>\begin{equation}<br>\mu_{d \times 1} &#x3D;<br>    \begin{pmatrix}<br>            \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{i1} \\<br>            \vdots \\<br>            \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{in}<br>    \end{pmatrix}<br>\end{equation}</p>
 <p>對每一行操作特徵零均值化：</p>
 <p>\begin{equation}<br>\begin{aligned}<br>\tilde{X}<br>    &amp;&#x3D; X - \mathbb{1}_{n \times 1} \mu^T \\<br>    &amp;&#x3D; \begin{pmatrix} x_1 &amp; \cdots &amp; x_d \end{pmatrix} - \begin{pmatrix} \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{i1} &amp; \cdots &amp; \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{id} \end{pmatrix} \\<br>    &amp;&#x3D; \begin{pmatrix}<br>            x_{11} - \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{i1} &amp; \cdots &amp; x_{1d} - \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{id} \\<br>            \vdots &amp; \ddots &amp; \vdots \\<br>            x_{n1} - \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{i1} &amp; \cdots &amp; x_{nd} - \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{id}<br>        \end{pmatrix} \\<br>    &amp;&#x3D; \begin{pmatrix}<br>            (1 - \frac{1}{n}) x_{11} - \cdots - \frac{1}{n} x_{n1} &amp; \cdots &amp; (1 - \frac{1}{n}) x_{1d} - \cdots - \frac{1}{n} x_{nd} \\<br>            \vdots &amp; \ddots &amp; \vdots \\<br>            - \frac{1}{n} x_{11} - \cdots + (1 - \frac{1}{n}) x_{n1} &amp; \cdots &amp; - \frac{1}{n} x_{1d} - \cdots + (1 - \frac{1}{n}) x_{nd}<br>        \end{pmatrix} \\<br>    &amp;&#x3D; \begin{pmatrix}<br>            1 - \frac{1}{n} &amp; - \frac{1}{n} &amp; \cdots &amp; - \frac{1}{n} \\<br>            - \frac{1}{n} &amp; 1 - \frac{1}{n} &amp; \cdots &amp; - \frac{1}{n} \\<br>            \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\<br>            - \frac{1}{n} &amp; - \frac{1}{n} &amp; \cdots &amp; 1 - \frac{1}{n}<br>        \end{pmatrix} \cdot \begin{pmatrix} x_1 &amp; \cdots &amp; x_d \end{pmatrix} \\<br>    &amp;&#x3D; (I_n - \frac{1}{n} \mathbb{1}_{n \times n}) \cdot X_{n \times d} \\<br>    &amp;&#x3D; \tilde{I}_{n \times n} \cdot X_{n \times d}<br>\end{aligned}<br>\end{equation}</p>
-<p>其中$\tilde{I}$被我們稱之為<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Centering_matrix">居中矩陣</a>(centering matrix)。$\tilde{I}$還有一個性質，他是一個正交投影矩陣(orthogonal projection matrix)。所以$\tilde{I}$會滿足$\tilde{I}^2 &#x3D; \tilde{I}$和$\tilde{I}^T &#x3D; \tilde{I}$。</p>
+<p>其中<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Centering_matrix">居中矩陣</a>(centering matrix)是一個正交投影矩陣(orthogonal projection matrix)滿足：</p>
+<p>\begin{equation}<br>    \tilde{I} &#x3D; \tilde{I}^2 &#x3D; \tilde{I}^T<br>\end{equation}</p>
 <p>第二個要會的是算一下斜方差矩陣(sample covariance matrix)。</p>
 <p>\begin{equation}<br>\begin{aligned}<br>    C &amp;&#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} (x_i - \mu) (x_i - \mu)^T \\<br>      &amp;&#x3D; \frac{1}{n} \tilde{X}^T \tilde{X} \\<br>      &amp;&#x3D; \frac{1}{n} (\tilde{I} X)^T (\tilde{I} X) \\<br>      &amp;&#x3D; \frac{1}{n} X^T \tilde{I}^T \tilde{I} X \\<br>      &amp;&#x3D; \frac{1}{n} X^T \tilde{I} X<br>\end{aligned}<br>\end{equation}</p>
 <h2 id="PCA思想"><a href="#PCA思想" class="headerlink" title="PCA思想"></a>PCA思想</h2><p>假如原始的樣本$X \in \mathbb{R}^{n \times d}$($n$個數據點且特徵維度是$d$)。單看其中一筆數據$x_i$在座標$v \in \mathbb{R}^{d}$上做投影，則會得到</p>
