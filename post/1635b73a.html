@@ -1,0 +1,527 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>魔術方塊LBL解法 | 汪揚中的一條船</title><meta name="author" content="汪揚"><meta name="copyright" content="汪揚"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="魔術方塊，這個1974年由Ernő Rubik所發明的智力遊戲，迄今仍吸引著全球數百萬愛好者。解開魔術方塊的過程不僅能增強記憶與解決問題的能力，還能帶來極大的樂趣和成就感。因此，我決定撰寫這個部落格來分享我解魔術方塊的心得與技巧，希望能幫助初學者輕鬆入門，並為那些尋求提高解題速度的人提供策略。 國際轉動代號轉動代號在魔術方塊社群中起著一種普遍語言的作用，全球的玩家都使用這些代號來溝通解題的步驟和方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="魔術方塊LBL解法">
+<meta property="og:url" content="https://penguinwang96825.github.io/Yang-Chinese-Blog/post/1635b73a.html">
+<meta property="og:site_name" content="汪揚中的一條船">
+<meta property="og:description" content="魔術方塊，這個1974年由Ernő Rubik所發明的智力遊戲，迄今仍吸引著全球數百萬愛好者。解開魔術方塊的過程不僅能增強記憶與解決問題的能力，還能帶來極大的樂趣和成就感。因此，我決定撰寫這個部落格來分享我解魔術方塊的心得與技巧，希望能幫助初學者輕鬆入門，並為那些尋求提高解題速度的人提供策略。 國際轉動代號轉動代號在魔術方塊社群中起著一種普遍語言的作用，全球的玩家都使用這些代號來溝通解題的步驟和方">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://penguinwang96825.github.io/Yang-Chinese-Blog/cover/wallhaven-0jk3ey.jpg">
+<meta property="article:published_time" content="2024-05-11T16:29:35.000Z">
+<meta property="article:modified_time" content="2024-05-11T20:55:55.956Z">
+<meta property="article:author" content="汪揚">
+<meta property="article:tag" content="魔術方塊">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://penguinwang96825.github.io/Yang-Chinese-Blog/cover/wallhaven-0jk3ey.jpg"><link rel="shortcut icon" href="/Yang-Chinese-Blog/img/favicon.png"><link rel="canonical" href="https://penguinwang96825.github.io/Yang-Chinese-Blog/post/1635b73a.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/Yang-Chinese-Blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;true&quot;}"></script><script>const GLOBAL_CONFIG = { 
+  root: '/Yang-Chinese-Blog/',
+  algolia: undefined,
+  localSearch: {"path":"/Yang-Chinese-Blog/search.xml","preload":false,"languages":{"hits_empty":"找不到您查詢的內容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '魔術方塊LBL解法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-11 21:55:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/Yang-Chinese-Blog/img/avatar-icon.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/Yang-Chinese-Blog/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/Yang-Chinese-Blog/tags/"><div class="headline">標籤</div><div class="length-num">10</div></a><a href="/Yang-Chinese-Blog/categories/"><div class="headline">分類</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 歸檔</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/charts/"><i class="fa-fw fa-sharp fa-solid fa-chart-pie"></i><span> 統計</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/Yang-Chinese-Blog/cover/wallhaven-0jk3ey.jpg')"><nav id="nav"><span id="blog-info"><a href="/Yang-Chinese-Blog/" title="汪揚中的一條船"><span class="site-name">汪揚中的一條船</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 歸檔</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/charts/"><i class="fa-fw fa-sharp fa-solid fa-chart-pie"></i><span> 統計</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">魔術方塊LBL解法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">發表於</span><time datetime="2024-05-11T16:29:35.000Z" title="發表於 2024-05-11 17:29:35">2024-05-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/Yang-Chinese-Blog/categories/%E7%94%9F%E6%B4%BB/">生活</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/Yang-Chinese-Blog/categories/%E7%94%9F%E6%B4%BB/%E5%A8%9B%E6%A8%82/">娛樂</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字數總計:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀時長:</span><span>4分鐘</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="魔術方塊LBL解法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>魔術方塊，這個1974年由Ernő Rubik所發明的智力遊戲，迄今仍吸引著全球數百萬愛好者。解開魔術方塊的過程不僅能增強記憶與解決問題的能力，還能帶來極大的樂趣和成就感。因此，我決定撰寫這個部落格來分享我解魔術方塊的心得與技巧，希望能幫助初學者輕鬆入門，並為那些尋求提高解題速度的人提供策略。</p>
+<h1 id="國際轉動代號"><a href="#國際轉動代號" class="headerlink" title="國際轉動代號"></a>國際轉動代號</h1><p>轉動代號在魔術方塊社群中起著一種普遍語言的作用，全球的玩家都使用這些代號來溝通解題的步驟和方法，甚至在比賽中也以這種代號來出題！因此，當我們希望進一步提升自己的技能和實力時，學會這些轉動代號變得極其關鍵，因為只有理解這些代號，我們才能夠明白其他玩家分享的解題公式應如何操作。</p>
+<h2 id="外層轉動符號"><a href="#外層轉動符號" class="headerlink" title="外層轉動符號"></a>外層轉動符號</h2><table>
+    <thead>
+        <tr>
+        <th>轉動代號</th>
+        <th>圖例</th>
+        <th>轉動代號</th>
+        <th>圖例</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td class="align-middle text-center" style="text-align: center;">R <span class="text-muted small">(Right)</span></td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_R.svg" alt="Rotate_R" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>
+        <td class="align-middle text-center" style="text-align: center;">R'</td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_R'.svg" alt="Rotate_R" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>
+        </tr>
+        <tr>
+        <td class="align-middle text-center" style="text-align: center;">U <span class="text-muted small">(Up)</span></td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_U.svg" alt="Rotate_R" style="width: 100px; height: 100px; max-width: 100%"></td>
+        <td class="align-middle text-center" style="text-align: center;">U'</td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_U'.svg" alt="Rotate_R" style="width: 100px; height: 100px; max-width: 100%"></td>
+        </tr>
+        <tr>
+        <td class="align-middle text-center" style="text-align: center;">F <span class="text-muted small">(Front)</span></td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_F.svg" alt="Rotate_R" style="width: 100px; height: 100px; max-width: 100%"></td>
+        <td class="align-middle text-center" style="text-align: center;">F'</td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_F'.svg" alt="Rotate_R" style="width: 100px; height: 100px; max-width: 100%"></td>
+        </tr>
+        <tr>
+        <td class="align-middle text-center" style="text-align: center;">L <span class="text-muted small">(Left)</span></td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_L.svg" alt="Rotate_R" style="width: 100px; height: 100px; max-width: 100%"></td>
+        <td class="align-middle text-center" style="text-align: center;">L'</td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_L'.svg" alt="Rotate_R" style="width: 100px; height: 100px; max-width: 100%"></td>
+        </tr>
+        <tr>
+        <td class="align-middle text-center" style="text-align: center;">D <span class="text-muted small">(Down)</span></td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_D.svg" alt="Rotate_R" style="width: 100px; height: 100px; max-width: 100%"></td>
+        <td class="align-middle text-center" style="text-align: center;">D'</td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_D'.svg" alt="Rotate_R" style="width: 100px; height: 100px; max-width: 100%"></td>
+        </tr>
+        <tr>
+        <td class="align-middle text-center" style="text-align: center;">B <span class="text-muted small">(Back)</span></td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_B.svg" alt="Rotate_R" style="width: 100px; height: 100px; max-width: 100%"></td>
+        <td class="align-middle text-center" style="text-align: center;">B'</td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_B'.svg" alt="Rotate_R" style="width: 100px; height: 100px; max-width: 100%"></td>
+        </tr>
+    </tbody>
+</table>
+
+<p>除此之外，為了明確的表示更多的方向與動作，在這些英文的符號後面會出現三種情況：</p>
+<ul>
+<li>‘：代表為動作符號逆時針旋轉。例如：R’</li>
+<li>2：代表所指的這個動作要旋轉180度，即轉動兩步(次)。例如：R2</li>
+<li>w：代表所指的這個動作，一次要轉動兩層。例如：Rw</li>
+</ul>
+<h2 id="整顆旋轉代號"><a href="#整顆旋轉代號" class="headerlink" title="整顆旋轉代號"></a>整顆旋轉代號</h2><table class="table table-bordered bg-BgGray text-center text-nowrap">
+    <thead>
+        <tr>
+        <th>轉動代號</th>
+        <th>圖例</th>
+        <th>轉動代號</th>
+        <th>圖例</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td class="align-middle" style="text-align: center;">x</td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_x.svg" alt="Rotate_x" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>
+        <td class="align-middle" style="text-align: center;">x'</td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_x'.svg" alt="Rotate_x'" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>  
+        </tr>
+        <tr>
+        <td class="align-middle" style="text-align: center;">y</td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_y.svg" alt="Rotate_y" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>
+        <td class="align-middle" style="text-align: center;">y'</td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_y'.svg" alt="Rotate_y'" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>
+        </tr>
+        <tr>
+        <td class="align-middle" style="text-align: center;">z</td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_z.svg" alt="Rotate_z" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>
+        <td class="align-middle" style="text-align: center;">z'</td>
+        <td><img src="https://chiacube.tw/images/Rotate/rotate_z'.svg" alt="Rotate_z'" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="中層轉動代號"><a href="#中層轉動代號" class="headerlink" title="中層轉動代號"></a>中層轉動代號</h2><table class="table table-bordered bg-BgGray text-center text-nowrap">
+    <thead>
+        <tr>
+            <th>轉動代號</th>
+            <th>圖例</th>
+            <th>轉動代號</th>
+            <th>圖例</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="align-middle" style="text-align: center;">M</td>
+            <td><img src="https://chiacube.tw/images/Rotate/rotate_M.svg" alt="Rotate_M" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>
+            <td class="align-middle" style="text-align: center;">M'</td>
+            <td><img src="https://chiacube.tw/images/Rotate/rotate_M'.svg" alt="Rotate_M'" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>
+        </tr>
+        <tr>
+            <td class="align-middle" style="text-align: center;">E</td>
+            <td><img src="https://chiacube.tw/images/Rotate/rotate_E.svg" alt="Rotate_E" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>
+            <td class="align-middle" style="text-align: center;">E'</td>
+            <td><img src="https://chiacube.tw/images/Rotate/rotate_E'.svg" alt="Rotate_E'" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>
+        </tr>
+        <tr>
+            <td class="align-middle" style="text-align: center;">S</td>
+            <td><img src="https://chiacube.tw/images/Rotate/rotate_S.svg" alt="Rotate_S" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>
+            <td class="align-middle" style="text-align: center;">S'</td>
+            <td><img src="https://chiacube.tw/images/Rotate/rotate_S'.svg" alt="Rotate_S'" style="width: 100px; height: 100px; min-width:80px; max-width: 100%"></td>
+        </tr>
+    </tbody>
+</table>
+
+<h1 id="LBL"><a href="#LBL" class="headerlink" title="LBL"></a>LBL</h1><p>LBL (Layer-By-Layer)解法是解魔術方塊中最基本也是最適合初學者學習的一種方法。這種方法按照層次逐層解開魔術方塊，讓解題者能夠較容易地理解和記憶所需的算法。步驟大致區分如下：</p>
+<ol>
+<li>第一層</li>
+<li>第二層</li>
+<li>第三層十字</li>
+<li>第三層頂面</li>
+<li>頂層角塊</li>
+<li>頂層邊塊</li>
+</ol>
+<p>這邊我們會直接略過第一層，然後從第二層的公式開始教起。</p>
+<h1 id="第二層"><a href="#第二層" class="headerlink" title="第二層"></a>第二層</h1><table width="100%">
+  <thead>
+    <tr>
+      <th width="33%">I</th>
+      <th width="33%">II</th>
+      <th width="33%">III</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="33%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&fc=nnnnnnnrnnnnnrnrrrnbnnbnbbbwwwwwwwwwoooooooooggggggggg"/></td>
+      <td width="33%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&fc=nnnnnbnnnnrnnrnrrrnnnnbnbbbwwwwwwwwwoooooooooggggggggg"/></td>
+      <td width="33%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&fc=nnnnnnnnnnnnbrnrrrnnnnbrbbbwwwwwwwwwoooooooooggggggggg"/></td>
+    </tr>
+    <tr>
+      <td width="33%" style="text-align: center;"><strong>F U F U F U' F' U' F'</strong></td>
+      <td width="33%" style="text-align: center;"><strong>R' U' R' U' R' U R U R</strong></td>
+      <td width="33%" style="text-align: center;"><strong>(R U U R' U)2 F' U' F</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h1 id="OLL"><a href="#OLL" class="headerlink" title="OLL"></a>OLL</h1><p>OLL (Orientation of the Last Layer)是魔術方塊解法中的一個重要階段。這一階段的目的是通過一系列的旋轉公式，調整最後一層的所有方塊，使頂面的顏色統一。這涉及到旋轉方塊使其頂面的顏色與魔術方塊的頂面顏色一致，而不關心方塊之間的相對位置，位置的調整留待PLL階段處理。為了減少需要記憶的公式數量，我選擇使用兩階段OLL，這涉及到使用更少的公式來進行兩次操作。首先是形成一個頂面十字，然後再將其餘方塊調整到正確的方向。</p>
+<h2 id="OLL第一階段"><a href="#OLL第一階段" class="headerlink" title="OLL第一階段"></a>OLL第一階段</h2><table width="100%">
+  <thead>
+    <tr>
+      <th width="33%">邊塊單點</th>
+      <th width="33%">邊塊直線</th>
+      <th width="33%">邊塊L形</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="33%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&fd=nnnnunnnnnnnnnnnnnnnnnnnnnndddddddddnnnnnnnnnnnnnnnnnn"/></td>
+      <td width="33%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&fd=nnnuuunnnnnnnnnnnnnnnnnnnnndddddddddnnnnnnnnnnnnnnnnnn"/></td>
+      <td width="33%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&fd=nnnnuununnnnnnnnnnnnnnnnnnndddddddddnnnnnnnnnnnnnnnnnn"/></td>
+    </tr>
+    <tr>
+      <td width="33%" style="text-align: center;"><strong>F (R U R' U') S (R U R' U') Fw'</strong></td>
+      <td width="33%" style="text-align: center;"><strong>F (R U R' U') F'</strong></td>
+      <td width="33%" style="text-align: center;"><strong>Fw (R U R' U') Fw'</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="OLL第二階段"><a href="#OLL第二階段" class="headerlink" title="OLL第二階段"></a>OLL第二階段</h2><table width="100%">
+  <thead>
+    <tr>
+      <th width="50%">角塊3翻I</th>
+      <th width="50%">角塊3翻II</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&fd=nuuuuunununnnnnnnnunnnnnnnndddddddddunnnnnnnnnnnnnnnnn"/></td>
+      <td width="50%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&fd=uunuuununnnunnnnnnnnunnnnnndddddddddnnunnnnnnnnnnnnnnn"/></td>
+    </tr>
+    <tr>
+      <td width="50%" style="text-align: center;"><strong>R U2 R' U' R U' R'</strong></td>
+      <td width="50%" style="text-align: center;"><strong>L' U2 L U L' U L</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="50%">角塊4翻I</th>
+      <th width="50%">角塊4翻II</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&fd=nunuuununnnnnnnnnnununnnnnndddddddddnnnnnnnnnununnnnnn"/></td>
+      <td width="50%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&fd=nunuuununnnnnnnnnnnnunnnnnndddddddddununnnnnnunnnnnnnn"/></td>
+    </tr>
+    <tr>
+      <td width="50%" style="text-align: center;"><strong>F (R U R' U')3 F'</strong></td>
+      <td width="50%" style="text-align: center;"><strong>R U2 R2 U' R2 U' R2 U2 R</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="33%">角塊2翻I</th>
+      <th width="33%">角塊2翻II</th>
+      <th width="33%">角塊2翻III</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="33%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&fd=uunuuunuunnunnnnnnunnnnnnnndddddddddnnnnnnnnnnnnnnnnnn"/></td>
+      <td width="33%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&fd=nuuuuunuunnnnnnnnnunnnnnnnndddddddddnnnnnnnnnnnunnnnnn"/></td>
+      <td width="33%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&fd=nunuuuuuunnnnnnnnnnnnnnnnnndddddddddnnnnnnnnnununnnnnn"/></td>
+    </tr>
+    <tr>
+      <td width="33%" style="text-align: center;"><strong>L' B' R' B L B' R B</strong></td>
+      <td width="33%" style="text-align: center;"><strong>L' B' R B L B' R' B</strong></td>
+      <td width="33%" style="text-align: center;"><strong>R2 D' R U2 R' D R U2 R</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="PLL"><a href="#PLL" class="headerlink" title="PLL"></a>PLL</h1><p>在魔術方塊的PLL (Permutation of the Last Layer)階段，我們的目標是將最後一層的方塊全部排列到正確的位置上。本篇我們會使用兩段式PLL。這個策略將最後一層的置換分為兩個階段來完成。在這種策略下，解題者會先確定最後一層所有<em><strong>角塊</strong></em>的正確位置，然後再進行<em><strong>邊塊</strong></em>的置換。</p>
+<h2 id="PLL第一階段"><a href="#PLL第一階段" class="headerlink" title="PLL第一階段"></a>PLL第一階段</h2><p>PLL第一階段會先確定最後一層所有<em><strong>角塊</strong></em>都到正確位置。第一階段只會有兩種情況：無一側角落同色或是有一側角落同色。</p>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="50%">無一側角落同色</th>
+      <th width="50%">有一側角落同色</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&fd=uuuuuuuuunnnnnnnnnnnnnnnnnndddddddddnnnnnnnnnnnnnnnnnn"/></td>
+      <td width="50%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&fd=uuuuuuuuunnnnnnnnnnnnnnnnnndddddddddlnlllllllnnnnnnnnn"/></td>
+    </tr>
+    <tr>
+      <td width="50%" style="text-align: center;">F R U' R' U' R U R' F' (R U R' U') (R'F R F')</td>
+      <td width="50%" style="text-align: center;">(R U R' U') R' F R2 U' R' U' R U R' F'</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="PLL第二階段"><a href="#PLL第二階段" class="headerlink" title="PLL第二階段"></a>PLL第二階段</h2><p>PLL第二階段會確定最後一層所有<em><strong>邊塊</strong></em>都到正確位置。</p>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="50%">Ua-Perm</th>
+      <th width="50%">Ub-Perm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&alg=M2U3MU2M3U3M2&arw=U5U3-s7,U7U5-s7,U3U7-s7"/></td>
+      <td width="50%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&alg=M2UMU2M3UM2&arw=U3U5-s7,U5U7-s7,U7U3-s7"/></td>
+    </tr>
+    <tr>
+      <td width="50%" style="text-align: center;">M2 U M U2 M' U M2</td>
+      <td width="50%" style="text-align: center;">M2 U' M U2 M' U' M2</td>
+    </tr>
+  </tbody>
+</table>
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="50%">H-Perm</th>
+      <th width="50%">Z-Perm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&alg=M2U(M2U2M2)UM2&arw=U1U7,U7U1,U3U5,U5U3"/></td>
+      <td width="50%"><img src="http://cube.rider.biz/visualcube.php?fmt=svg&size=150&pzl=3&bg=t&view=plan&alg=M3UM2UM2UM3U2M2U&arw=U1U5,U5U1,U3U7,U7U3"/></td>
+    </tr>
+    <tr>
+      <td width="50%" style="text-align: center;"><strong>M2 U (M2 U2 M2) U M2</strong></td>
+      <td width="50%" style="text-align: center;"><strong>M' U (M2 U M2 U) M' U2 M2</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>練習是達到高效解題的關鍵。因為每一次的嘗試都讓我們更接近成為魔術方塊高手的目標。希望這個部落格能啟發讀者的魔術方塊探索之旅，解開更多的可能性。如果未來有更快的魔術方塊解法，我也會在此分享。</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://1hrbld.tw/category/algdb/3x3-pll-algs/">https://1hrbld.tw/category/algdb/3x3-pll-algs/</a></li>
+<li><a target="_blank" rel="noopener" href="http://cube.rider.biz/visualcube.php">http://cube.rider.biz/visualcube.php</a></li>
+<li><a target="_blank" rel="noopener" href="https://chiacube.tw/Basic/Rotate">https://chiacube.tw/Basic/Rotate</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://penguinwang96825.github.io/Yang-Chinese-Blog">汪揚</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://penguinwang96825.github.io/Yang-Chinese-Blog/post/1635b73a.html">https://penguinwang96825.github.io/Yang-Chinese-Blog/post/1635b73a.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://penguinwang96825.github.io/Yang-Chinese-Blog" target="_blank">汪揚中的一條船</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/Yang-Chinese-Blog/tags/%E9%AD%94%E8%A1%93%E6%96%B9%E5%A1%8A/">魔術方塊</a></div><div class="post_share"><div class="social-share" data-image="/Yang-Chinese-Blog/cover/wallhaven-0jk3ey.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/Yang-Chinese-Blog/post/b8597833.html" title="SVD的微分推導"><img class="cover" src="/Yang-Chinese-Blog/cover/wallhaven-4gmgkd.jpg" onerror="onerror=null;src='/Yang-Chinese-Blog/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SVD的微分推導</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/Yang-Chinese-Blog/img/avatar-icon.jpg" onerror="this.onerror=null;this.src='/Yang-Chinese-Blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">汪揚</div><div class="author-info__description">現在這麼苦是因為太順的路我不想走</div></div><div class="card-info-data site-data is-center"><a href="/Yang-Chinese-Blog/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/Yang-Chinese-Blog/tags/"><div class="headline">標籤</div><div class="length-num">10</div></a><a href="/Yang-Chinese-Blog/categories/"><div class="headline">分類</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/penguinwang96825"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">準備飛往英國攻讀CS博士學位！！！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%8B%E9%9A%9B%E8%BD%89%E5%8B%95%E4%BB%A3%E8%99%9F"><span class="toc-number">1.</span> <span class="toc-text">國際轉動代號</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E5%B1%A4%E8%BD%89%E5%8B%95%E7%AC%A6%E8%99%9F"><span class="toc-number">1.1.</span> <span class="toc-text">外層轉動符號</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E9%A1%86%E6%97%8B%E8%BD%89%E4%BB%A3%E8%99%9F"><span class="toc-number">1.2.</span> <span class="toc-text">整顆旋轉代號</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E5%B1%A4%E8%BD%89%E5%8B%95%E4%BB%A3%E8%99%9F"><span class="toc-number">1.3.</span> <span class="toc-text">中層轉動代號</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LBL"><span class="toc-number">2.</span> <span class="toc-text">LBL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%B1%A4"><span class="toc-number">3.</span> <span class="toc-text">第二層</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OLL"><span class="toc-number">4.</span> <span class="toc-text">OLL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#OLL%E7%AC%AC%E4%B8%80%E9%9A%8E%E6%AE%B5"><span class="toc-number">4.1.</span> <span class="toc-text">OLL第一階段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OLL%E7%AC%AC%E4%BA%8C%E9%9A%8E%E6%AE%B5"><span class="toc-number">4.2.</span> <span class="toc-text">OLL第二階段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PLL"><span class="toc-number">5.</span> <span class="toc-text">PLL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PLL%E7%AC%AC%E4%B8%80%E9%9A%8E%E6%AE%B5"><span class="toc-number">5.1.</span> <span class="toc-text">PLL第一階段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PLL%E7%AC%AC%E4%BA%8C%E9%9A%8E%E6%AE%B5"><span class="toc-number">5.2.</span> <span class="toc-text">PLL第二階段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-number">6.</span> <span class="toc-text">結語</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-number">7.</span> <span class="toc-text">References</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Yang-Chinese-Blog/post/1635b73a.html" title="魔術方塊LBL解法"><img src="/Yang-Chinese-Blog/cover/wallhaven-0jk3ey.jpg" onerror="this.onerror=null;this.src='/Yang-Chinese-Blog/img/404.jpg'" alt="魔術方塊LBL解法"/></a><div class="content"><a class="title" href="/Yang-Chinese-Blog/post/1635b73a.html" title="魔術方塊LBL解法">魔術方塊LBL解法</a><time datetime="2024-05-11T16:29:35.000Z" title="發表於 2024-05-11 17:29:35">2024-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Yang-Chinese-Blog/post/b8597833.html" title="SVD的微分推導"><img src="/Yang-Chinese-Blog/cover/wallhaven-4gmgkd.jpg" onerror="this.onerror=null;this.src='/Yang-Chinese-Blog/img/404.jpg'" alt="SVD的微分推導"/></a><div class="content"><a class="title" href="/Yang-Chinese-Blog/post/b8597833.html" title="SVD的微分推導">SVD的微分推導</a><time datetime="2023-02-20T17:41:21.000Z" title="發表於 2023-02-20 17:41:21">2023-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Yang-Chinese-Blog/post/a949fbb9.html" title="英國Research Intern的經歷"><img src="/Yang-Chinese-Blog/cover/wallhaven-g8g373.png" onerror="this.onerror=null;this.src='/Yang-Chinese-Blog/img/404.jpg'" alt="英國Research Intern的經歷"/></a><div class="content"><a class="title" href="/Yang-Chinese-Blog/post/a949fbb9.html" title="英國Research Intern的經歷">英國Research Intern的經歷</a><time datetime="2022-05-30T16:33:19.000Z" title="發表於 2022-05-30 17:33:19">2022-05-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Yang-Chinese-Blog/post/5fec1f59.html" title="踏上征途"><img src="/Yang-Chinese-Blog/cover/wallhaven-4gk7jl.jpg" onerror="this.onerror=null;this.src='/Yang-Chinese-Blog/img/404.jpg'" alt="踏上征途"/></a><div class="content"><a class="title" href="/Yang-Chinese-Blog/post/5fec1f59.html" title="踏上征途">踏上征途</a><time datetime="2018-12-03T17:09:45.000Z" title="發表於 2018-12-03 17:09:45">2018-12-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2024 By 汪揚</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜尋</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  資料庫載入中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜尋文章" type="text"/></div></div><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/Yang-Chinese-Blog/js/utils.js"></script><script src="/Yang-Chinese-Blog/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/Yang-Chinese-Blog/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

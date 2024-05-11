@@ -1,0 +1,317 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>SVD的微分推導 | 汪揚中的一條船</title><meta name="author" content="汪揚"><meta name="copyright" content="汪揚"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="最近剛好做的研究題目跟SVD有關，需要把SVD應用在神經網路裡面。所以就想說手推一下SVD的導數，並把它紀錄下來，以免之後老年癡呆都忘光光。想要看懂這篇的人也要有一點心理準備，等等的數學真的很不友善，我也是花了好久的時間才整理完這篇文章。 奇異值分解奇異值分解(Singular Value Decomposition, SVD)是線性代數裡邊一個重要的主題，主要就是在進行任意矩陣分解。在信號處理、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVD的微分推導">
+<meta property="og:url" content="https://penguinwang96825.github.io/Yang-Chinese-Blog/post/b8597833.html">
+<meta property="og:site_name" content="汪揚中的一條船">
+<meta property="og:description" content="最近剛好做的研究題目跟SVD有關，需要把SVD應用在神經網路裡面。所以就想說手推一下SVD的導數，並把它紀錄下來，以免之後老年癡呆都忘光光。想要看懂這篇的人也要有一點心理準備，等等的數學真的很不友善，我也是花了好久的時間才整理完這篇文章。 奇異值分解奇異值分解(Singular Value Decomposition, SVD)是線性代數裡邊一個重要的主題，主要就是在進行任意矩陣分解。在信號處理、">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://penguinwang96825.github.io/Yang-Chinese-Blog/cover/wallhaven-4gmgkd.jpg">
+<meta property="article:published_time" content="2023-02-20T17:41:21.000Z">
+<meta property="article:modified_time" content="2024-05-11T15:29:12.673Z">
+<meta property="article:author" content="汪揚">
+<meta property="article:tag" content="SVD">
+<meta property="article:tag" content="矩陣分解">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://penguinwang96825.github.io/Yang-Chinese-Blog/cover/wallhaven-4gmgkd.jpg"><link rel="shortcut icon" href="/Yang-Chinese-Blog/img/favicon.png"><link rel="canonical" href="https://penguinwang96825.github.io/Yang-Chinese-Blog/post/b8597833.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/Yang-Chinese-Blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;true&quot;}"></script><script>const GLOBAL_CONFIG = { 
+  root: '/Yang-Chinese-Blog/',
+  algolia: undefined,
+  localSearch: {"path":"/Yang-Chinese-Blog/search.xml","preload":false,"languages":{"hits_empty":"找不到您查詢的內容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SVD的微分推導',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-11 16:29:12'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/font.css"><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/Yang-Chinese-Blog/img/avatar-icon.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/Yang-Chinese-Blog/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/Yang-Chinese-Blog/tags/"><div class="headline">標籤</div><div class="length-num">10</div></a><a href="/Yang-Chinese-Blog/categories/"><div class="headline">分類</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 歸檔</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/charts/"><i class="fa-fw fa-sharp fa-solid fa-chart-pie"></i><span> 統計</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/Yang-Chinese-Blog/cover/wallhaven-4gmgkd.jpg')"><nav id="nav"><span id="blog-info"><a href="/Yang-Chinese-Blog/" title="汪揚中的一條船"><span class="site-name">汪揚中的一條船</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 歸檔</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/Yang-Chinese-Blog/charts/"><i class="fa-fw fa-sharp fa-solid fa-chart-pie"></i><span> 統計</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SVD的微分推導</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">發表於</span><time datetime="2023-02-20T17:41:21.000Z" title="發表於 2023-02-20 17:41:21">2023-02-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/Yang-Chinese-Blog/categories/%E7%A7%91%E7%A0%94/">科研</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字數總計:</span><span class="word-count">3.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀時長:</span><span>16分鐘</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="SVD的微分推導"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>最近剛好做的研究題目跟SVD有關，需要把SVD應用在神經網路裡面。所以就想說手推一下SVD的導數，並把它紀錄下來，以免之後老年癡呆都忘光光。想要看懂這篇的人也要有一點心理準備，等等的數學真的很不友善，我也是花了好久的時間才整理完這篇文章。</p>
+<h1 id="奇異值分解"><a href="#奇異值分解" class="headerlink" title="奇異值分解"></a>奇異值分解</h1><p>奇異值分解(Singular Value Decomposition, SVD)是線性代數裡邊一個重要的主題，主要就是在進行任意矩陣分解。在信號處理、圖像修復、數據壓縮、降噪、統計學有重要應用。</p>
+<h2 id="SVD分解"><a href="#SVD分解" class="headerlink" title="SVD分解"></a>SVD分解</h2><p>設$A$為一個$m \times n$的實矩陣，且$rank(A) &#x3D; r$，則full SVD具有以下形式：</p>
+<p>\begin{equation}<br>   A &#x3D; U \Sigma V^T<br>   \label{eq:svd}<br>\end{equation}</p>
+<p>其中$U \in \mathbb{R}^{m \times m}$、$\Sigma \in \mathbb{R}^{m \times n}$、$V \in \mathbb{R}^{n \times n}$。方陣$U$和$V$都是實正交矩陣(orthogonal matrix)。這邊我只考慮compact SVD，也就是$A &#x3D; U_r \Sigma_r V^T_r$。現在的三個矩陣維度分別為$U \in \mathbb{R}^{m \times r}$、$\Sigma \in \mathbb{R}^{r \times r}$、$V \in \mathbb{R}^{r \times n}$。矩陣的秩(rank)代表的是對存儲在矩陣$A$中的獨特信息的量，rank越高則信息越多。</p>
+<h2 id="SVD求導"><a href="#SVD求導" class="headerlink" title="SVD求導"></a>SVD求導</h2><p>既然我們知道了$rank(A) &#x3D; r$，則$r \leq min(m, n)$。我們還知道$U$和$V$都是實正交，則</p>
+<p>\begin{equation}<br>    U^T U &#x3D; V^T V &#x3D; I_r<br>    \label{eq:constraint}<br>\end{equation}</p>
+<p>現在$A$的導數可以寫成</p>
+<p>\begin{equation}<br>   dA &#x3D; dU \Sigma V^T + U d\Sigma V^T + U \Sigma dV^T<br>   \label{eq:diff-svd}<br>\end{equation}</p>
+<p>在限制式$\ref{eq:constraint}$中，我們可以先對$U$求導，得到</p>
+<p>\begin{equation}<br>   dU^T U + U^T dU &#x3D; 0<br>\end{equation}</p>
+<p>並且假設一個新的矩陣$d\Omega_U &#x3D; U^T dU$。因為$d\Omega_U &#x3D; U^T dU &#x3D; - dU^T U$，所以我們可以知道$d\Omega$是一個反對稱矩陣(skew-symmetric)。類似地，我們可以得到$d\Omega_V &#x3D; V^T dV &#x3D; - dV^T V$，所以$d\Omega_V$也是一個反對稱矩陣。</p>
+<p>對矩陣$A$左乘$U^T$並且右乘$V$，我們可以得到</p>
+<p>\begin{equation}<br>\begin{aligned}<br>    U^T dA V &amp;&#x3D; U^T dU \Sigma V^T V + U^T U d\Sigma V^T V + U^T U \Sigma dV^T V \\<br>             &amp;&#x3D; d\Omega_U \Sigma + d\Sigma + \Sigma d\Omega_V^T<br>\end{aligned}<br>\label{eq:diff-svd-dp}<br>\end{equation}</p>
+<p>現在我們定義$dP \equiv U^T dA V$，且使用$X \circ Y$來表示$X$和$Y$的Hadamard product。我們現在要分別去算$dP$斜對角元素和非斜對角元素的值。首先，我們求得$dP$斜對角元素為</p>
+<p>\begin{equation}<br>   I_r \circ dP &#x3D; d\Sigma<br>   \label{eq:diff-svd-diagonal}<br>\end{equation}</p>
+<p>且$dP$的非斜對角元素為</p>
+<p>\begin{equation}<br>\begin{aligned}<br>   \bar{I_r} \circ dP &amp;&#x3D; d\Omega_U \Sigma + \Sigma d\Omega_V^T \\<br>                         &amp;&#x3D; d\Omega_U \Sigma - \Sigma d\Omega_V<br>\end{aligned}<br>\label{eq:diff-svd-dp-nondiagonal}<br>\end{equation}</p>
+<p>由此可得$dP^T$的非斜對角元素為</p>
+<p>\begin{equation}<br>   \bar{I_r} \circ dP^T &#x3D; - \Sigma d\Omega_U + d\Omega_V \Sigma<br>   \label{eq:diff-svd-dpt-nondiagonal}<br>\end{equation}</p>
+<p>現在我們對式子$\ref{eq:diff-svd-dp-nondiagonal}$右乘$\Sigma$，並對式子$\ref{eq:diff-svd-dpt-nondiagonal}$左乘$\Sigma$，然後做相加可得</p>
+<p>\begin{equation}<br>\begin{aligned}<br>    \bar{I_r} \circ (dP \Sigma + \Sigma dP^T) &amp;&#x3D; (d\Omega_U \Sigma^2 + \Sigma d\Omega_V^T \Sigma) + (- \Sigma^2 d\Omega_U + \Sigma d\Omega_V \Sigma) \\<br>    &amp;&#x3D; (d\Omega_U \Sigma^2 - \Sigma^2 d\Omega_U) + (\Sigma d\Omega_V^T \Sigma + \Sigma d\Omega_V \Sigma) \\<br>    &amp;&#x3D; d\Omega_U \Sigma^2 - \Sigma^2 d\Omega_U<br>\end{aligned}<br>\end{equation}</p>
+<p>最終可以得到</p>
+<p>\begin{equation}<br>    d\Omega_U &#x3D; F \circ (dP \Sigma + \Sigma dP^T)<br>    \label{eq:omega-u}<br>\end{equation}</p>
+<p>其中</p>
+<p>\begin{equation}<br>    F &#x3D;<br>    \begin{cases}<br>      \frac{1}{\sigma_j^2 - \sigma_i^2} &amp; i \neq j \\<br>      0 &amp; i &#x3D; j<br>    \end{cases}<br>\end{equation}</p>
+<p>藉由類似的推導，我們也可以得到</p>
+<p>\begin{equation}<br>    d\Omega_V &#x3D; F \circ (\Sigma dP + dP^T \Sigma)<br>    \label{eq:omega-v}<br>\end{equation}</p>
+<p>因為$d\Omega_U &#x3D; U^T dU$，所以藉由左乘$U$我們得到$dU &#x3D; U d\Omega_U$。</p>
+<p>再繼續更深入的SVD導數推導之前，我們要先了解一些正交補餘(orthogonal complement)和投影矩陣(projection matrix)的性質。假設$U$的正交補餘矩陣為$U_{\bot}$且維度為$m \times (m-r)$，其中$U_{\bot}$可以藉由Gram-Schmidt process算出，這邊就不再詳細介紹這個算法。另外，投影矩陣$H$必須滿足$H^2 &#x3D; H$和$H^T &#x3D; H$，也就是自己的平方和自己的轉置都必須是自己。現在我們要來證明$U_{\bot} U_{\bot}^{T}$和$I - U U^{T}$都是投影矩陣。</p>
+<p>\begin{equation}<br>    (U_{\bot} U_{\bot}^{T})^2 &#x3D; U_{\bot} (U_{\bot}^{T} U_{\bot}) U_{\bot}^{T} &#x3D; U_{\bot} U_{\bot}^{T}<br>\end{equation}</p>
+<p>\begin{equation}<br>    (U_{\bot} U_{\bot}^{T})^T &#x3D; (U_{\bot}^{T})^T (U_{\bot})^T &#x3D; U_{\bot} U_{\bot}^{T}<br>\end{equation}</p>
+<p>\begin{equation}<br>    (I - U U^{T})^2 &#x3D; I - 2 U U^{T} + U U^{T} U U^{T} &#x3D; I - U U^{T}<br>\end{equation}</p>
+<p>\begin{equation}<br>    (I - U U^{T})^T &#x3D; (I - U U^{T})<br>\end{equation}</p>
+<p>除此之外，我們還必須了解$U$和$U_{\bot}$是否可以組成整個生成空間。我們先假設這句話為真，那麼對於任何一個向量空間都必須是$U$和$U_{\bot}$的線性組合，也就是$S &#x3D; aU + bU_{\bot}$，其中$a, b$為純量、$S$為一矩陣。我們先將$S$透過投影向量$U U^T$映射到$U$的行空間：</p>
+<p>\begin{equation}<br>    U U^T S &#x3D; U U^T (aU + bU_{\bot}) &#x3D; a U (U^T U)  + b U_{\bot} (U^T U_{\bot}) &#x3D; a U<br>\end{equation}</p>
+<p>其中$U^T U &#x3D; I$($U$為正交矩陣)，還有$U^T U_{\bot} &#x3D; 0$(因為$U$和$U_{\bot}$正交)。類似地，我們也可以將$S$透過投影向量$U_{\bot} U_{\bot}^T$映射到$U_{\bot}$的行空間：</p>
+<p>\begin{equation}<br>    U_{\bot} U_{\bot}^T S &#x3D; U_{\bot} U_{\bot}^T (a U + b U_{\bot}) &#x3D; a U_{\bot} (U_{\bot}^T U) + b U_{\bot} (U_{\bot}^T U_{\bot}) &#x3D; b U_{\bot}<br>\end{equation}</p>
+<p>合在一起看的話就是：</p>
+<p>\begin{equation}<br>\begin{aligned}<br>    (U U^T + U_{\bot} U_{\bot}^T) S &amp;&#x3D; U U^T S + U_{\bot} U_{\bot}^T S \\<br>                                    &amp;&#x3D; a U + b U_{\bot} \\<br>                                    &amp;&#x3D; I S<br>\end{aligned}<br>\end{equation}</p>
+<p>所以，我們可以得到$U U^T + U_{\bot} U_{\bot}^T$就是一個identity matrix。我們可以寫成以下恆等式：</p>
+<p>\begin{equation}<br>    U_{\bot} U_{\bot}^T &#x3D; I - U U^T<br>\end{equation}</p>
+<p>回歸到SVD的求導。為了求$dA$(式子\ref{eq:diff-svd})，我們需要算出$dU$、$d\Sigma$、$dV^T$。可以想像把SVD視為一種函示映射$f$，然後對輸入矩陣$A$增加擾動$dA$。那也就相當於對生成$A$的行空間的$U$進行擾動$dU$、對生成$A$的列空間的$V$進行擾動$dV$。不失一般性的，我們先看$dU$。假設$dU$在$U$的整個行空間($m \times m$)進行擾動，其中還可以分解為在$m \times r$和$m \times (m-r)$的部分進行擾動。所以我們可以寫成以下式子：</p>
+<p>\begin{equation}<br>    dU &#x3D; U d\Omega_U + U_{\bot} dK_U<br>    \label{eq:du}<br>\end{equation}</p>
+<p>其中我們已經求出$d\Omega_U$(式子\ref{eq:omega-u})，現在需要去解$dK_U$。我們對$dA$左乘一個$U_{\bot}^{T}$得到：</p>
+<p>\begin{equation}<br>\begin{aligned}<br>    U_{\bot}^{T} dA &amp;&#x3D; U_{\bot}^{T} dU \Sigma V^T + U_{\bot}^{T} U d\Sigma V^T + U_{\bot}^{T} U \Sigma dV^T \\<br>                    &amp;&#x3D; U_{\bot}^{T} dU \Sigma V^T \\<br>                    &amp;&#x3D; U_{\bot}^{T} (U d\Omega_U + U_{\bot} dK_U) \Sigma V^T \\<br>                    &amp;&#x3D; (U_{\bot}^{T} U d\Omega_U + U_{\bot}^{T} U_{\bot} dK_U) \Sigma V^T \\<br>                    &amp;&#x3D; dK_U \Sigma V^T<br>\end{aligned}<br>\label{eq:compute-dk-u}<br>\end{equation}</p>
+<p>整理一下式子\ref{eq:compute-dk-u}就可以得到$dK_U$：</p>
+<p>\begin{equation}<br>    dK_U &#x3D; U_{\bot}^{T} dA V \Sigma^{-1}<br>    \label{eq:dk-u}<br>\end{equation}</p>
+<p>同理，我們可以去算$dV$</p>
+<p>\begin{equation}<br>    dV &#x3D; V d\Omega_V + V_{\bot} dK_V<br>    \label{eq:dv}<br>\end{equation}</p>
+<p>然後得到$dK_V$</p>
+<p>\begin{equation}<br>    dK_V &#x3D; V_{\bot}^{T} dA^T U \Sigma^{-1}<br>    \label{eq:dk-v}<br>\end{equation}</p>
+<p>把式子\ref{eq:omega-u}和式子\ref{eq:dk-u}代入\ref{eq:du}可以得到$dU$，把式子\ref{eq:omega-v}和式子\ref{eq:dk-v}代入\ref{eq:dv}可以得到$dV$。</p>
+<p>\begin{equation}<br>    dU &#x3D; U (F \circ (U^T dA V \Sigma + \Sigma V^T dA^T U)) + (I_m - U U^T) dA V \Sigma^{-1}<br>\end{equation}</p>
+<p>\begin{equation}<br>    d\Sigma &#x3D; I_r \circ (U^T dA V)<br>\end{equation}</p>
+<p>\begin{equation}<br>    dV &#x3D; V (F \circ (\Sigma U^T dA V + V^T dA^T U \Sigma)) + (I_n - V V^T) dA^T U \Sigma^{-1}<br>\end{equation}</p>
+<h1 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h1><p>在多元統計分析中，主成分分析(Principal Components Analysis, PCA)是一種統計分析和數據降維的方法。數學定義上，PCA的基本思想是使用一個正交化線性轉換把原始數據(sample matrix)轉換到一個新的座標系統上，並且投影在新的座標後仍保留數據最大的變異。換句話說，這一數據的任何投影的第一大變異數在第一個坐標上，第二大變異數在第二個坐標上，依次類推。</p>
+<h2 id="預備知識"><a href="#預備知識" class="headerlink" title="預備知識"></a>預備知識</h2><p>首先，我們要先了解怎麼對數據做中心化(centralisation)。</p>
+<p>\begin{equation}<br>X_{n \times d} &#x3D;<br>    \begin{pmatrix}<br>            x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1d} \\<br>            x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2d} \\<br>            \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\<br>            x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd}<br>    \end{pmatrix}<br>\end{equation}</p>
+<p>\begin{equation}<br>\mu_{d \times 1} &#x3D;<br>    \begin{pmatrix}<br>            \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{i1} \\<br>            \vdots \\<br>            \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{in}<br>    \end{pmatrix}<br>\end{equation}</p>
+<p>對每一行操作特徵零均值化：</p>
+<p>\begin{equation}<br>\begin{aligned}<br>\tilde{X}<br>    &amp;&#x3D; X - \mathbb{1}_{n \times 1} \mu^T \\<br>    &amp;&#x3D; \begin{pmatrix} x_1 &amp; \cdots &amp; x_d \end{pmatrix} - \begin{pmatrix} \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{i1} &amp; \cdots &amp; \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{id} \end{pmatrix} \\<br>    &amp;&#x3D; \begin{pmatrix}<br>            x_{11} - \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{i1} &amp; \cdots &amp; x_{1d} - \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{id} \\<br>            \vdots &amp; \ddots &amp; \vdots \\<br>            x_{n1} - \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{i1} &amp; \cdots &amp; x_{nd} - \frac{1}{n} \sum\limits_{i&#x3D;1}^{n} x_{id}<br>        \end{pmatrix} \\<br>    &amp;&#x3D; \begin{pmatrix}<br>            (1 - \frac{1}{n}) x_{11} - \cdots - \frac{1}{n} x_{n1} &amp; \cdots &amp; (1 - \frac{1}{n}) x_{1d} - \cdots - \frac{1}{n} x_{nd} \\<br>            \vdots &amp; \ddots &amp; \vdots \\<br>            - \frac{1}{n} x_{11} - \cdots + (1 - \frac{1}{n}) x_{n1} &amp; \cdots &amp; - \frac{1}{n} x_{1d} - \cdots + (1 - \frac{1}{n}) x_{nd}<br>        \end{pmatrix} \\<br>    &amp;&#x3D; \begin{pmatrix}<br>            1 - \frac{1}{n} &amp; - \frac{1}{n} &amp; \cdots &amp; - \frac{1}{n} \\<br>            - \frac{1}{n} &amp; 1 - \frac{1}{n} &amp; \cdots &amp; - \frac{1}{n} \\<br>            \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\<br>            - \frac{1}{n} &amp; - \frac{1}{n} &amp; \cdots &amp; 1 - \frac{1}{n}<br>        \end{pmatrix} \cdot \begin{pmatrix} x_1 &amp; \cdots &amp; x_d \end{pmatrix} \\<br>    &amp;&#x3D; (I_n - \frac{1}{n} \mathbb{1}_{n \times n}) \cdot X_{n \times d} \\<br>    &amp;&#x3D; \tilde{I}_{n \times n} \cdot X_{n \times d}<br>\end{aligned}<br>\end{equation}</p>
+<p>其中<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Centering_matrix">居中矩陣</a>(centering matrix)是一個正交投影矩陣(orthogonal projection matrix)滿足：</p>
+<p>\begin{equation}<br>    \tilde{I} &#x3D; \tilde{I}^2 &#x3D; \tilde{I}^T<br>\end{equation}</p>
+<p>第二個要會的是算一下斜方差矩陣(sample covariance matrix)。</p>
+<p>\begin{equation}<br>\begin{aligned}<br>    C &amp;&#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} (x_i - \mu) (x_i - \mu)^T \\<br>      &amp;&#x3D; \frac{1}{n} \tilde{X}^T \tilde{X} \\<br>      &amp;&#x3D; \frac{1}{n} (\tilde{I} X)^T (\tilde{I} X) \\<br>      &amp;&#x3D; \frac{1}{n} X^T \tilde{I}^T \tilde{I} X \\<br>      &amp;&#x3D; \frac{1}{n} X^T \tilde{I} X<br>\end{aligned}<br>\end{equation}</p>
+<h2 id="PCA思想"><a href="#PCA思想" class="headerlink" title="PCA思想"></a>PCA思想</h2><p>假如原始的樣本$X \in \mathbb{R}^{n \times d}$($n$個數據點且特徵維度是$d$)。單看其中一筆數據$x_i$在座標$v \in \mathbb{R}^{d}$上做投影，則會得到</p>
+<p>\begin{equation}<br>    proj_{v} x_i &#x3D; \frac{v^{T} x_{i}}{\lVert v \rVert^2} v<br>\end{equation}</p>
+<p>不失一般性，我們假設$v$是單位向量，則可以得到投影後的數據點是$(v^T x_i) v$。那麼我們可以得到去中心化後的數據的方差為：</p>
+<p>\begin{equation}<br>\begin{aligned}<br>    \frac{1}{n} \sum_{i&#x3D;1}^{n} (\tilde{x}_i^T v - 0)^2<br>        &amp;&#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} (\tilde{x}_i^T v)^T (\tilde{x}_i^T v) \\<br>        &amp;&#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} v^T \tilde{x}_i \tilde{x}_i^T v \\<br>        &amp;&#x3D; v^T (\frac{1}{n} \sum_{i&#x3D;1}^{n} \tilde{x}_i \tilde{x}_i^T) v \\<br>        &amp;&#x3D; v^T (\frac{1}{n} \tilde{X}^T \tilde{X}) v \\<br>        &amp;&#x3D; v^T C v<br>\end{aligned}<br>\end{equation}</p>
+<p>我們希望可以最大化投影後的數據方差，則可以利用拉格朗日函數建立目標函數：</p>
+<p>\begin{equation}<br>    \mathcal{L}(v) &#x3D; - v^T C v + \lambda (v^T v - 1)<br>\end{equation}</p>
+<p>對$v$求導可以得到：</p>
+<p>\begin{equation}<br>    \frac{\partial \mathcal{L}}{\partial v} &#x3D; -2 C v + 2 \lambda v &#x3D; 0<br>\end{equation}</p>
+<p>最終得到：</p>
+<p>\begin{equation}<br>    C v &#x3D; \lambda v<br>\end{equation}</p>
+<p>所以，我們可以得到$v$是$C$的特徵向量，$\lambda$是對應的特徵向量的特徵值。要是想要最大化$v^T C v$，那就必須要最大化$\lambda$，因為$v^T C v &#x3D; v^T \lambda v &#x3D; \lambda v^T v &#x3D; \lambda$。</p>
+<p>這裡還需要證明一下另外一個重要的性質。對於$X$的第$j$個主要成分$v_{j}$會是斜方差矩陣$C$第$j$大的特徵向量，對應的$\lambda_{j}$是第$j$大的特徵值。這邊會證明$j&#x3D;2$的例子：</p>
+<p>\begin{equation}<br>    v_2 &#x3D; \underset{\lVert v \rVert^2 &#x3D; 1, v_1^T v &#x3D; 0}{\operatorname{arg max}} v^T C v<br>\end{equation}</p>
+<p>一樣列出拉格朗日函數的目標函數</p>
+<p>\begin{equation}<br>    \mathcal{L}(v) &#x3D; - v^T C v + \alpha_1 (v^T v - 1) + \alpha_2 (v_{1}^{T} v)<br>\end{equation}</p>
+<p>最小化$\mathcal{L}(v)$可以得到</p>
+<p>\begin{equation}<br>    -2 C v + 2 \alpha_1 v + \alpha_2 v_1 &#x3D; 0<br>\end{equation}</p>
+<p>所以$\alpha_2 &#x3D; 0$且$C v &#x3D; \alpha_1 v$。想要最大化$v^T C v$的話，$v_2$就必須是第二大的特徵向量且$\alpha_1 &#x3D; \lambda_2$。</p>
+<h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><p>首先我要恭喜有成功看完這篇文章並且沒有腦死的各位。<br>之後我投的paper有成功上岸，我會再寫一篇文章來分享。</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
+<li>Edelman et al., The geometry of algorithms with orthogonality constraints, 1998</li>
+<li>Townsend, Differentiating the singular value decomposition, 2016</li>
+<li>Wang et al., Robust Differentiable SVD, 2021</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://penguinwang96825.github.io/Yang-Chinese-Blog">汪揚</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://penguinwang96825.github.io/Yang-Chinese-Blog/post/b8597833.html">https://penguinwang96825.github.io/Yang-Chinese-Blog/post/b8597833.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://penguinwang96825.github.io/Yang-Chinese-Blog" target="_blank">汪揚中的一條船</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/Yang-Chinese-Blog/tags/SVD/">SVD</a><a class="post-meta__tags" href="/Yang-Chinese-Blog/tags/%E7%9F%A9%E9%99%A3%E5%88%86%E8%A7%A3/">矩陣分解</a></div><div class="post_share"><div class="social-share" data-image="/Yang-Chinese-Blog/cover/wallhaven-4gmgkd.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/Yang-Chinese-Blog/post/1635b73a.html" title="魔術方塊LBL解法"><img class="cover" src="/Yang-Chinese-Blog/cover/wallhaven-0jk3ey.jpg" onerror="onerror=null;src='/Yang-Chinese-Blog/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">魔術方塊LBL解法</div></div></a></div><div class="next-post pull-right"><a href="/Yang-Chinese-Blog/post/a949fbb9.html" title="英國Research Intern的經歷"><img class="cover" src="/Yang-Chinese-Blog/cover/wallhaven-g8g373.png" onerror="onerror=null;src='/Yang-Chinese-Blog/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">英國Research Intern的經歷</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/Yang-Chinese-Blog/img/avatar-icon.jpg" onerror="this.onerror=null;this.src='/Yang-Chinese-Blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">汪揚</div><div class="author-info__description">現在這麼苦是因為太順的路我不想走</div></div><div class="card-info-data site-data is-center"><a href="/Yang-Chinese-Blog/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/Yang-Chinese-Blog/tags/"><div class="headline">標籤</div><div class="length-num">10</div></a><a href="/Yang-Chinese-Blog/categories/"><div class="headline">分類</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/penguinwang96825"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">準備飛往英國攻讀CS博士學位！！！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A5%87%E7%95%B0%E5%80%BC%E5%88%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">奇異值分解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SVD%E5%88%86%E8%A7%A3"><span class="toc-number">1.1.</span> <span class="toc-text">SVD分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVD%E6%B1%82%E5%B0%8E"><span class="toc-number">1.2.</span> <span class="toc-text">SVD求導</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">主成分分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A0%90%E5%82%99%E7%9F%A5%E8%AD%98"><span class="toc-number">2.1.</span> <span class="toc-text">預備知識</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PCA%E6%80%9D%E6%83%B3"><span class="toc-number">2.2.</span> <span class="toc-text">PCA思想</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90"><span class="toc-number">3.</span> <span class="toc-text">總結</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Yang-Chinese-Blog/post/1635b73a.html" title="魔術方塊LBL解法"><img src="/Yang-Chinese-Blog/cover/wallhaven-0jk3ey.jpg" onerror="this.onerror=null;this.src='/Yang-Chinese-Blog/img/404.jpg'" alt="魔術方塊LBL解法"/></a><div class="content"><a class="title" href="/Yang-Chinese-Blog/post/1635b73a.html" title="魔術方塊LBL解法">魔術方塊LBL解法</a><time datetime="2024-05-11T16:29:35.000Z" title="發表於 2024-05-11 17:29:35">2024-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Yang-Chinese-Blog/post/b8597833.html" title="SVD的微分推導"><img src="/Yang-Chinese-Blog/cover/wallhaven-4gmgkd.jpg" onerror="this.onerror=null;this.src='/Yang-Chinese-Blog/img/404.jpg'" alt="SVD的微分推導"/></a><div class="content"><a class="title" href="/Yang-Chinese-Blog/post/b8597833.html" title="SVD的微分推導">SVD的微分推導</a><time datetime="2023-02-20T17:41:21.000Z" title="發表於 2023-02-20 17:41:21">2023-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Yang-Chinese-Blog/post/a949fbb9.html" title="英國Research Intern的經歷"><img src="/Yang-Chinese-Blog/cover/wallhaven-g8g373.png" onerror="this.onerror=null;this.src='/Yang-Chinese-Blog/img/404.jpg'" alt="英國Research Intern的經歷"/></a><div class="content"><a class="title" href="/Yang-Chinese-Blog/post/a949fbb9.html" title="英國Research Intern的經歷">英國Research Intern的經歷</a><time datetime="2022-05-30T16:33:19.000Z" title="發表於 2022-05-30 17:33:19">2022-05-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Yang-Chinese-Blog/post/5fec1f59.html" title="踏上征途"><img src="/Yang-Chinese-Blog/cover/wallhaven-4gk7jl.jpg" onerror="this.onerror=null;this.src='/Yang-Chinese-Blog/img/404.jpg'" alt="踏上征途"/></a><div class="content"><a class="title" href="/Yang-Chinese-Blog/post/5fec1f59.html" title="踏上征途">踏上征途</a><time datetime="2018-12-03T17:09:45.000Z" title="發表於 2018-12-03 17:09:45">2018-12-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2024 By 汪揚</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜尋</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  資料庫載入中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜尋文章" type="text"/></div></div><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/Yang-Chinese-Blog/js/utils.js"></script><script src="/Yang-Chinese-Blog/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/Yang-Chinese-Blog/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
